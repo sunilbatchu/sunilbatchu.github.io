@@ -273,6 +273,9 @@
             overflow-y: auto;
             overflow-x: hidden;
             background: linear-gradient(180deg, #fff 0%, #f8f9ff 100%);
+            -webkit-overflow-scrolling: touch;
+            will-change: transform;
+            transform: translateZ(0);
         }
         
         section {
@@ -600,17 +603,14 @@
                 height: auto;
                 overflow-x: hidden;
             }
-            
             .mobile-header { display: flex; }
             .hamburger { display: flex; }
-            
             .page { 
                 grid-template-columns: 1fr;
                 padding-top: 60px;
                 min-height: auto;
                 height: auto;
             }
-            
             .sidebar {
                 position: fixed;
                 top: 0;
@@ -628,18 +628,19 @@
                 left: 0;
             }
             .sidebar::before { display: none; }
-            
             .main { 
                 padding: 20px 16px;
                 min-height: calc(100vh - 60px);
-                overflow-y: visible;
+                overflow-y: auto;
+                overflow-x: hidden;
                 height: auto;
+                -webkit-overflow-scrolling: touch;
+                will-change: transform;
+                transform: translateZ(0);
             }
-            
             .experience-grid { grid-template-columns: 1fr 1fr; }
             .skills-row { grid-template-columns: 1fr 1fr; }
             .achievements-grid { grid-template-columns: 1fr; }
-            
             .summary-text { padding: 12px; font-size: 0.95rem; }
             .section-title { font-size: 0.95rem; }
         }
@@ -954,9 +955,12 @@
         hamburger.classList.toggle('active');
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        // Only block scroll if menu is open and on mobile
+        if (sidebar.classList.contains('active') && window.innerWidth <= 768) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     }
     
     // Close menu when clicking on sidebar links (mobile)
