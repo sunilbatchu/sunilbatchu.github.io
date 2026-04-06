@@ -271,7 +271,11 @@
             flex-direction: column;
             gap: 20px;
             overflow-y: auto;
+            overflow-x: hidden;
             background: linear-gradient(180deg, #fff 0%, #f8f9ff 100%);
+            -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+            touch-action: pan-y; /* Allow vertical touch scrolling */
+            overscroll-behavior: contain; /* Prevent scroll chaining */
         }
         
         section {
@@ -569,10 +573,13 @@
             z-index: 998;
             opacity: 0;
             transition: opacity 0.3s ease;
+            touch-action: none; /* Prevent scroll on overlay */
+            pointer-events: none; /* Don't capture events when hidden */
         }
         .overlay.active {
             display: block;
             opacity: 1;
+            pointer-events: auto; /* Capture events when visible */
         }
         
         /* Tablet - Large (1200px) */
@@ -613,6 +620,10 @@
                 z-index: 999;
                 padding-top: 80px;
                 overflow-y: auto;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
+                overscroll-behavior: contain;
                 transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .sidebar.active {
@@ -623,6 +634,8 @@
             .main { 
                 padding: 20px 16px;
                 min-height: calc(100vh - 60px);
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
             }
             
             .experience-grid { grid-template-columns: 1fr 1fr; }
@@ -982,17 +995,35 @@
         }
     });
     
-    // Swipe to close on mobile
+    // Swipe to close on mobile (improved to not interfere with scrolling)
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchEndX = 0;
+    let touchEndY = 0;
+    let isSwipe = false;
     
     document.querySelector('.sidebar').addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        isSwipe = false;
+    }, { passive: true });
+    
+    document.querySelector('.sidebar').addEventListener('touchmove', (e) => {
+        const deltaX = Math.abs(e.changedTouches[0].screenX - touchStartX);
+        const deltaY = Math.abs(e.changedTouches[0].screenY - touchStartY);
+        // Only consider horizontal swipe if horizontal movement > vertical
+        if (deltaX > deltaY && deltaX > 10) {
+            isSwipe = true;
+        }
     }, { passive: true });
     
     document.querySelector('.sidebar').addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) {
+        touchEndY = e.changedTouches[0].screenY;
+        const deltaX = touchStartX - touchEndX;
+        const deltaY = Math.abs(touchStartY - touchEndY);
+        // Only close if horizontal swipe left and mostly horizontal movement
+        if (isSwipe && deltaX > 50 && deltaX > deltaY) {
             toggleMenu();
         }
     }, { passive: true });
