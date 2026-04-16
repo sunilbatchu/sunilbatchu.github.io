@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunil Batchu - Engineering Manager | Full Stack JavaScript Leader | AI-Augmented Engineering</title>
+    <title>Sunil Batchu - Senior Engineering Manager | Full Stack Engineering Leader | AI-Augmented Engineering</title>
     
     <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="Engineering Manager with 18+ years experience leading Full Stack JavaScript teams. Expert in React, Angular, Node.js, and AI-augmented engineering workflows.">
+    <meta name="description" content="Senior Engineering Manager with 18+ years experience building AI-powered product experiences and distributed cloud systems. Expert in React, Angular, Node.js, Java, C#.">
     <meta name="keywords" content="Engineering Manager, Full Stack Developer, JavaScript, React, Angular, Node.js, AI, RAG, LangChain">
     <meta name="author" content="Sunil Batchu">
     <meta name="robots" content="index, follow">
@@ -19,8 +19,8 @@
     <meta property="og:url" content="https://sunilbatchu.github.io/">
     
     <!-- Theme Color -->
-    <meta name="theme-color" content="#1e3a5f">
-    <meta name="msapplication-TileColor" content="#1e3a5f">
+    <meta name="theme-color" content="#2d3643">
+    <meta name="msapplication-TileColor" content="#2d3643">
     
     <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,9 +45,9 @@
         *{margin:0;padding:0;box-sizing:border-box}
         html,body{height:100%;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#1a1a2e;color:#333;font-size:14px}
         .page{display:grid;grid-template-columns:300px 1fr;min-height:100vh;max-width:1600px;margin:0 auto;background:#fff;box-shadow:0 0 60px rgba(102,126,234,0.3)}
-        .sidebar{background:linear-gradient(180deg,#1e3a5f 0%,#0f1c2e 100%);color:#fff;padding:28px 24px;display:flex;flex-direction:column}
+        .sidebar{background:linear-gradient(180deg,#2d3643 0%,#1e2633 100%);color:#fff;padding:28px 24px;display:flex;flex-direction:column}
         .main{padding:28px 32px;display:flex;flex-direction:column;gap:20px;overflow-y:auto;background:linear-gradient(180deg,#fff 0%,#f8f9ff 100%)}
-        .mobile-header{display:none;position:fixed;top:0;left:0;right:0;height:60px;background:linear-gradient(135deg,#1e3a5f 0%,#0f1c2e 100%);z-index:1000;padding:0 20px;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+        .mobile-header{display:none;position:fixed;top:0;left:0;right:0;height:60px;background:linear-gradient(135deg,#2d3643 0%,#1e2633 100%);z-index:1000;padding:0 20px;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
         @media(max-width:768px){.mobile-header{display:flex}.page{grid-template-columns:1fr;padding-top:60px}.sidebar{position:fixed;top:0;left:-320px;width:300px;height:100vh;z-index:999;padding-top:80px;overflow-y:auto;transition:left 0.3s}.sidebar.active{left:0}}
         
         /* Animations */
@@ -96,7 +96,7 @@
         
         /* Left Sidebar */
         .sidebar {
-            background: linear-gradient(180deg, #1e3a5f 0%, #0f1c2e 100%);
+            background: linear-gradient(180deg, #2d3643 0%, #1e2633 100%);
             color: #fff;
             padding: 28px 24px;
             display: flex;
@@ -264,6 +264,197 @@
             transform: rotate(15deg) scale(1.2);
         }
         
+        /* Career Journey Timeline - Horizontal Layout for Main Content */
+        .career-journey-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e8ebf5;
+            margin-bottom: 10px;
+        }
+
+        .career-journey {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        /* Horizontal connecting line */
+        .career-journey::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            right: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #43e97b, #4facfe, #f093fb, #667eea, #4facfe);
+            transform: translateY(-50%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .journey-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+            flex: 1;
+            max-width: 120px;
+        }
+
+        .journey-node:hover {
+            transform: translateY(-5px);
+        }
+
+        .journey-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 3px solid #fff;
+        }
+
+        .journey-circle:hover {
+            transform: scale(1.15);
+        }
+
+        .journey-circle.current {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #1a1a2e;
+            box-shadow: 0 0 20px rgba(79, 172, 254, 0.6);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .journey-circle.manager {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .journey-circle.senior {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .journey-circle.mid {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .journey-circle.junior {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: #1a1a2e;
+            box-shadow: 0 4px 15px rgba(67, 233, 123, 0.4);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.6); }
+            50% { box-shadow: 0 0 35px rgba(79, 172, 254, 0.9), 0 0 50px rgba(0, 242, 254, 0.5); }
+        }
+
+        .journey-label {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #555;
+            line-height: 1.3;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .journey-node:hover .journey-label {
+            color: #333;
+        }
+
+        .journey-label strong {
+            display: block;
+            font-size: 0.8rem;
+            color: #2d3643;
+            margin-bottom: 2px;
+        }
+
+        /* Hide connectors in horizontal layout - using ::before line instead */
+        .journey-connector {
+            display: none;
+        }
+
+        /* Domain Expertise Enhanced */
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .domain-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102,126,234,0.2) 0%, rgba(118,75,162,0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 8px;
+            border: 2px solid rgba(102,126,234,0.3);
+            margin: 0 auto;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .domain-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102,126,234,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .domain-circle:hover::before {
+            opacity: 1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .domain-circle:hover {
+            transform: scale(1.15) rotate(5deg);
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+            background: linear-gradient(135deg, rgba(102,126,234,0.4) 0%, rgba(118,75,162,0.4) 100%);
+        }
+
+        .domain-circle.center {
+            grid-column: 1 / -1;
+        }
+        
         /* Main Content */
         .main {
             padding: 28px 32px;
@@ -289,7 +480,7 @@
         .section-title {
             font-size: 1rem;
             font-weight: 600;
-            color: #1e3a5f;
+            color: #2d3643;
             text-transform: uppercase;
             letter-spacing: 1px;
             padding-bottom: 8px;
@@ -393,7 +584,7 @@
         .skill-box strong {
             display: block;
             font-size: 0.8rem;
-            color: #1e3a5f;
+            color: #2d3643;
             text-transform: uppercase;
             margin-bottom: 6px;
             transition: color 0.3s;
@@ -445,7 +636,7 @@
         .exp-card:hover .project { color: #764ba2; }
         .exp-card .role { 
             font-weight: 600; 
-            color: #1e3a5f; 
+            color: #2d3643; 
             font-size: 0.95rem;
             transition: color 0.3s;
         }
@@ -503,7 +694,7 @@
             left: 0;
             right: 0;
             height: 60px;
-            background: linear-gradient(135deg, #1e3a5f 0%, #0f1c2e 100%);
+            background: linear-gradient(135deg, #2d3643 0%, #1e2633 100%);
             z-index: 1000;
             padding: 0 20px;
             align-items: center;
@@ -629,6 +820,15 @@
             .achievements-grid { grid-template-columns: 1fr; }
             .summary-text { padding: 12px; font-size: 0.95rem; }
             .section-title { font-size: 0.95rem; }
+            
+            /* Career Journey Mobile - 768px */
+            .career-journey-section { padding: 15px; }
+            .career-journey::before { left: 25px; right: 25px; }
+            .journey-node { max-width: 90px; }
+            .journey-circle { width: 40px; height: 40px; font-size: 0.9rem; }
+            .journey-circle.current { width: 48px; height: 48px; }
+            .journey-label { font-size: 0.65rem; }
+            .journey-label strong { font-size: 0.7rem; }
         }
         
         /* Mobile - Large (576px) */
@@ -668,6 +868,25 @@
                 padding: 12px;
                 font-size: 0.9rem;
             }
+            
+            /* Career Journey Mobile - 576px - Stack vertically on small screens */
+            .career-journey {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .career-journey::before {
+                display: none; /* Hide horizontal line on very small screens */
+            }
+            .career-journey-section { padding: 12px; }
+            .journey-node { 
+                max-width: 70px;
+                flex: 0 0 calc(33.33% - 10px);
+            }
+            .journey-circle { width: 38px; height: 38px; font-size: 0.85rem; border-width: 2px; }
+            .journey-circle.current { width: 44px; height: 44px; }
+            .journey-label { font-size: 0.6rem; margin-top: 6px; }
+            .journey-label strong { font-size: 0.65rem; }
             
             .summary-text {
                 font-size: 0.95rem;
@@ -712,6 +931,17 @@
             .exp-card .company { font-size: 0.85rem; }
             
             .achievement { font-size: 0.85rem; padding: 10px; }
+            
+            /* Career Journey Mobile - 400px */
+            .career-journey-section { padding: 10px; }
+            .journey-node { 
+                flex: 0 0 calc(33.33% - 8px);
+                max-width: 60px;
+            }
+            .journey-circle { width: 32px; height: 32px; font-size: 0.75rem; }
+            .journey-circle.current { width: 38px; height: 38px; }
+            .journey-label { font-size: 0.55rem; }
+            .journey-label strong { font-size: 0.6rem; }
         }
         
         /* Landscape phone */
@@ -734,8 +964,10 @@
                 height: auto;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+                background: #2d3643 !important;
             }
             .exp-card:hover, .skill-box:hover, .achievement:hover { transform: none; box-shadow: none; }
+            .career-journey, .domain-grid { display: none; }
         }
     </style>
 </head>
@@ -757,7 +989,7 @@
     <aside class="sidebar">
         <div class="profile">
             <h1>Sunil Batchu</h1>
-            <p class="title">Engineering Manager<br>Full Stack JavaScript Leader<br>AI-Augmented Engineering<br>Leadership with AI - ISB</p>
+            <p class="title">Senior Engineering Manager<br>Full Stack Engineering Leader<br>AI-Augmented Engineering</p>
         </div>
         
         <div class="contact-list">
@@ -770,73 +1002,75 @@
 
         <div class="sidebar-section">
             <h3>Leadership Skills</h3>
-            <span class="skill-tag">Team Building</span>
-            <span class="skill-tag">Hiring & Recruiting</span>
-            <span class="skill-tag">Mentoring</span>
-            <span class="skill-tag">Agile / Scrum</span>
-            <span class="skill-tag">Stakeholder Mgmt</span>
-            <span class="skill-tag">Cross-functional Collab</span>
-            <span class="skill-tag">Strategic Planning</span>
-            <span class="skill-tag">Performance Reviews</span>
+            <span class="skill-tag">Team Leadership</span>
+            <span class="skill-tag">Engineering Management</span>
+            <span class="skill-tag">Hiring and Recruiting</span>
+            <span class="skill-tag">Talent Development</span>
+            <span class="skill-tag">Agile Methodologies</span>
+            <span class="skill-tag">Scrum Master</span>
+            <span class="skill-tag">Stakeholder Management</span>
+            <span class="skill-tag">Cross-functional Collaboration</span>
+            <span class="skill-tag">Customer Obsession</span>
+            <span class="skill-tag">Inclusive Leadership</span>
         </div>
 
         <div class="sidebar-section">
-            <h3>AI & Productivity</h3>
+            <h3>AI & Platform Engineering</h3>
             <span class="skill-tag">RAG Architecture</span>
             <span class="skill-tag">Context Engineering</span>
+            <span class="skill-tag">Agentic Workflows</span>
             <span class="skill-tag">LangChain</span>
             <span class="skill-tag">OpenAI APIs</span>
             <span class="skill-tag">GitHub Copilot</span>
-            <span class="skill-tag">Prompt Design</span>
+            <span class="skill-tag">Distributed Systems</span>
+            <span class="skill-tag">Telemetry</span>
         </div>
 
         <div class="sidebar-section">
             <h3>Core Tech</h3>
             <span class="skill-tag">React</span>
             <span class="skill-tag">Angular</span>
+            <span class="skill-tag">Vue.js</span>
             <span class="skill-tag">Node.js</span>
             <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Flutter</span>
             <span class="skill-tag">Java</span>
-            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Kubernetes</span>
             <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Azure</span>
             <span class="skill-tag">GCP</span>
         </div>
 
         <div class="sidebar-section">
             <h3>Education</h3>
             <div class="edu-item">
-                <strong>Leadership with AI</strong>
-                <span>Indian School of Business<br>2023 – 2024</span>
+                <strong>Executive Certificate in Leadership with AI</strong>
+                <span>Indian School of Business, Hyderabad<br>2024</span>
             </div>
             <div class="edu-item">
-                <strong>B.Tech, ECE</strong>
-                <span>CUSAT, Kerala<br>2003 – 2007</span>
+                <strong>B.Tech, Electronics and Communication Engineering</strong>
+                <span>CUSAT, Kerala<br>2007</span>
             </div>
         </div>
 
         <div class="sidebar-section">
-            <h3>Certification</h3>
+            <h3>Certifications</h3>
             <div class="cert-badge">
                 <i class="fas fa-award"></i>
-                Leadership with AI – ISB
+                Executive Certificate: Leadership with AI, ISB 2024
             </div>
         </div>
 
         <div class="sidebar-section">
             <h3>Domain Expertise</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;">
-                <span class="skill-tag" style="background: rgba(102,126,234,0.35); font-size: 0.75rem;">Content Management</span>
-                <span class="skill-tag" style="background: rgba(102,126,234,0.35); font-size: 0.75rem;">Enterprise Software</span>
-                <span class="skill-tag" style="background: rgba(102,126,234,0.35); font-size: 0.75rem;">Financial Services</span>
-                <span class="skill-tag" style="background: rgba(102,126,234,0.35); font-size: 0.75rem;">Automotive Tech</span>
-                <span class="skill-tag" style="background: rgba(102,126,234,0.35); font-size: 0.75rem;">Telecom</span>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; text-align: center; padding: 6px; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto;" title="OpenText Technologies">OpenText</div>
-                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; text-align: center; padding: 6px; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto;" title="CDK Global">CDK Global</div>
-                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 600; text-align: center; padding: 6px; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto;" title="Bank of America">Bank of America</div>
-                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; text-align: center; padding: 6px; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto;" title="HSBC Global Technology">HSBC</div>
-                <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; text-align: center; padding: 6px; border: 1px solid rgba(255,255,255,0.2); margin: 0 auto; grid-column: 1 / -1;" title="Tech Mahindra">Tech Mahindra</div>
+            <div class="domain-grid">
+                <div class="domain-circle" title="OpenText Technologies · Enterprise Content Management">OpenText</div>
+                <div class="domain-circle" title="CDK Global · Automotive Software">CDK Global</div>
+                <div class="domain-circle" title="Bank of America · FinTech and Banking">Bank of America</div>
+                <div class="domain-circle" title="HSBC Global Technology · FinTech and Banking">HSBC</div>
+                <div class="domain-circle center" title="Tech Mahindra · Telecom Platforms">Tech Mahindra</div>
             </div>
         </div>
     </aside>
@@ -845,21 +1079,56 @@
         <section>
             <div class="section-title">Professional Summary</div>
             <p class="summary-text">
-                Engineering Manager with 18+ years leading Full Stack teams in the JavaScript ecosystem (React, Angular, Node.js) with strong Java enterprise foundations. Currently driving AI adoption through RAG architectures, context engineering, and AI-assisted workflows—strategically integrating LLMs to boost productivity and deliver smarter product features.
+                Senior Engineering Manager with 18+ years of experience building AI-powered product experiences and distributed cloud systems across Web and Mobile platforms. Expert in Full Stack development (React, Angular, Node.js) with strong Java and C# enterprise foundations. Driving innovation through agentic coding workflows, data-driven decision making, and rapid experimentation to deliver scalable, intelligent solutions that transform user experiences.
             </p>
         </section>
 
+        <section class="career-journey-section">
+            <div class="section-title">Career Journey</div>
+            <div class="career-journey">
+                <!-- Technical Foundation - Start -->
+                <div class="journey-node">
+                    <div class="journey-circle junior" title="Technical Foundation">🎯</div>
+                    <div class="journey-label"><strong>Foundation</strong>CMS · Enterprise</div>
+                </div>
+                
+                <!-- Senior Consultant -->
+                <div class="journey-node">
+                    <div class="journey-circle mid" title="Senior Consultant">💼</div>
+                    <div class="journey-label"><strong>Sr. Consultant</strong>Full Stack Dev</div>
+                </div>
+                
+                <!-- Principal Engineer -->
+                <div class="journey-node">
+                    <div class="journey-circle senior" title="Principal Engineer">⚡</div>
+                    <div class="journey-label"><strong>Principal</strong>UI Architecture</div>
+                </div>
+                
+                <!-- Sr. Manager -->
+                <div class="journey-node">
+                    <div class="journey-circle manager" title="Sr. Manager">👔</div>
+                    <div class="journey-label"><strong>Sr. Manager</strong>Platform Eng.</div>
+                </div>
+                
+                <!-- Current: AI Engineering Leader -->
+                <div class="journey-node">
+                    <div class="journey-circle current" title="AI Engineering Leader">🚀</div>
+                    <div class="journey-label"><strong>AI Leader</strong>18+ Engineers</div>
+                </div>
+            </div>
+        </section>
+
         <section>
-            <div class="section-title">Key Achievements</div>
+            <div class="section-title">Notable Achievements</div>
             <div class="achievements-grid">
                 <div class="achievement"><i class="fas fa-check-circle"></i> Led multiple engineering teams totaling 18+ engineers delivering high-availability products on cloud platforms.</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Automated code reviews using internal LLMs with context engineering</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Enabled teams to adopt AI coding tools (GitHub Copilot) boosting productivity</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Leveraged AI tools for automated test case generation & execution</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Used AI for sprint planning, work-item distribution & capacity planning</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Architected microservices (Node.js, Java) with 99.99% uptime</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Reduced deployment time 50% through CI/CD automation</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Mentored engineers in JavaScript frameworks & AI-assisted development</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Automated code reviews using internal LLMs with context engineering.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Enabled teams to adopt AI coding tools (GitHub Copilot) to boost productivity.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Leveraged AI tools for automated test case generation, increasing test coverage by 40% and reducing execution time by 50%.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Used AI for sprint planning, work-item distribution, and capacity planning.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Architected microservices (Node.js, Java) with 99.99% uptime.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Reduced deployment time by 50% through CI/CD automation.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> Mentored engineers in JavaScript frameworks and AI-assisted development.</div>
             </div>
         </section>
 
@@ -871,19 +1140,19 @@
             <div class="skills-row">
                 <div class="skill-box">
                     <strong>Team Management</strong>
-                    <span>Team Building, Hiring & Recruiting, Mentoring, Performance Reviews</span>
+                    <span>Team Leadership, Engineering Management, Hiring and Recruiting, Talent Development, Mentoring, Performance Management, Customer Obsession, Inclusive Leadership</span>
                 </div>
                 <div class="skill-box">
                     <strong>Process & Strategy</strong>
-                    <span>Agile / Scrum, Strategic Planning, Stakeholder Management, Cross-functional Collaboration</span>
+                    <span>Agile Methodologies, Scrum Master, Strategic Planning, Stakeholder Management, Cross-functional Collaboration, Data-driven decision making</span>
                 </div>
                 <div class="skill-box">
-                    <strong>AI Architecture</strong>
-                    <span>RAG Architecture, Context Engineering, LangChain, OpenAI APIs</span>
+                    <strong>AI & Platform Engineering</strong>
+                    <span>RAG Architecture, Context Engineering, Agentic Workflows, LangChain, OpenAI APIs, Distributed Systems</span>
                 </div>
                 <div class="skill-box">
-                    <strong>AI Tools</strong>
-                    <span>GitHub Copilot, Prompt Design, AI-Augmented Workflows, LLM Integration</span>
+                    <strong>AI Tools & Telemetry</strong>
+                    <span>GitHub Copilot, AI-Augmented Workflows, LLM Integration, Observability, Telemetry Pipelines</span>
                 </div>
             </div>
         </section>
@@ -893,15 +1162,15 @@
             <div class="skills-row">
                 <div class="skill-box">
                     <strong>Frontend</strong>
-                    <span>React, Angular, Vue, Redux, Backbone, Marionette, HTML5, CSS3, SASS</span>
+                    <span>React, Angular, Vue, Flutter, Redux, Backbone, Marionette, HTML5, CSS3, SASS</span>
                 </div>
                 <div class="skill-box">
                     <strong>Backend</strong>
-                    <span>Node.js, Express, Java, Spring Boot, REST APIs, Microservices</span>
+                    <span>Node.js, Express, Java, C#, Spring Boot, GraphQL, REST APIs, Microservices</span>
                 </div>
                 <div class="skill-box">
                     <strong>Cloud & DevOps</strong>
-                    <span>AWS, GCP, Docker, Jenkins, CI/CD, Firebase, Webpack</span>
+                    <span>AWS, Azure, GCP, Kubernetes, Helm, Docker, Jenkins, CI/CD, Observability</span>
                 </div>
                 <div class="skill-box">
                     <strong>Data & Testing</strong>
@@ -920,13 +1189,14 @@
                     <div class="date">July 2021 – Present</div>
                     <div class="tech">Node.js, React, Backbone, Marionette, LESS, Handlebars</div>
                     <ul>
-                        <li>Engineering Manager for all UI teams under Content Server product.</li>
-                        <li>Managing and recruiting all engineers and formed high performing teams.</li>
-                        <li>Gave brown bag sessions on leveraging AI using Context Engineering that improves productivity.</li>
-                        <li>Submitted a patent idea for a methodology to remediate accessibility violations in web applications by combining AI &amp; context engineering.</li>
-                        <li>Drive AI augmented engineering in engineering teams to boost productivity.</li>
-                        <li>Lead architectural discussions with product managers & designers</li>
-                        <li>Manage R&D projects producing new designs & products</li>
+                        <li>Led 18+ engineers across multiple UI teams, achieving 30% faster release cycles by implementing agentic coding workflows and AI-augmented engineering practices.</li>
+                        <li>Owned full lifecycle from conception to deployment, driving seamless end-to-end delivery of features across Web and Mobile clients.</li>
+                        <li>Drove Platform Engineering for SmartView UI framework through cross-group design collaboration, reducing feature development time by 30%.</li>
+                        <li>Architected distributed services with integrated observability and telemetry pipelines, reducing live site issue resolution time by 40%.</li>
+                        <li>Led on-call rotation and 24x7 incident response, ensuring rapid debugging and resolution of customer-reported issues.</li>
+                        <li>Improved test coverage by 35% through integration testing strategy and fail-fast iteration practices.</li>
+                        <li>Submitted a patent idea for remediating accessibility violations via AI &amp; context engineering.</li>
+                        <li>Built high-performing teams through strategic hiring, mentoring, and performance management.</li>
                     </ul>
                 </div>
                 <div class="exp-card">
@@ -936,11 +1206,11 @@
                     <div class="date">Oct 2019 – June 2021</div>
                     <div class="tech">Node.js, React, Backbone, Marionette, LESS, Handlebars</div>
                     <ul>
-                        <li>Architect for SmartView product, the UI framework for all Content Server modules.</li>
-                        <li>Designed & developed all components compliant in usability, accessibility, and high performance.</li>
-                        <li>Designed generic UI components for in-house framework used across applications</li>
-                        <li>Automated dev testing to enable CI/CD process</li>
-                        <li>Created POC for voice-driven applications</li>
+                        <li>Platform Engineering lead for SmartView, a UI framework powering all Content Server modules, enabling cross-group design consistency.</li>
+                        <li>Designed reusable components compliant with usability, accessibility, and performance standards, adopted by 10+ product modules.</li>
+                        <li>Created generic UI component library with 50+ components for the in-house framework, reducing development time by 40% across enterprise applications.</li>
+                        <li>Automated developer testing to enable CI/CD pipelines, reducing deployment time from 4 hours to 2 hours per release.</li>
+                        <li>Built a POC for voice-driven applications demonstrating AI integration capabilities.</li>
                     </ul>
                 </div>
                 <div class="exp-card">
@@ -950,11 +1220,13 @@
                     <div class="date">Apr 2017 – Oct 2019</div>
                     <div class="tech">Node.js, React, Express, LESS, Handlebars, HTML5</div>
                     <ul>
-                        <li>Revamped UI of dealer-facing website builder tool</li>
-                        <li>Built drag/drop library in vanilla JS for website builder</li>
-                        <li>Developed dashboard app for single-click operations</li>
-                        <li>Designed deep linking solution using hash technique</li>
-                        <li>Built React SPA to schedule consumer website designs</li>
+                        <li>Revamped UI of dealer-facing website builder tool, improving user engagement by 25% and reducing page load time by 40%.</li>
+                        <li>Built drag-and-drop library in vanilla JS for website builder, deployed across 500+ dealer websites, increasing user engagement by 35%.</li>
+                        <li>Developed dashboard app for single-click operations, reducing support ticket resolution time by 30%.</li>
+                        <li>Designed and implemented Node.js/Express microservices for site publishing and template management workflows.</li>
+                        <li>Integrated React applications with REST and GraphQL services and added telemetry to speed up troubleshooting of production issues.</li>
+                        <li>Designed deep-linking solution using hash-based routing, improving user session duration by 15% through shareable URLs.</li>
+                        <li>Built a React SPA to schedule consumer website designs.</li>
                     </ul>
                 </div>
                 <div class="exp-card">
@@ -964,11 +1236,11 @@
                     <div class="date">Aug 2013 – Mar 2017</div>
                     <div class="tech">Node.js, Angular, React, MongoDB, Express, SASS</div>
                     <ul>
-                        <li>Offshore Lead for CMS application development</li>
-                        <li>Built enterprise solution generating static HTML pages</li>
-                        <li>Developed Node.js build tool for HTML page generation</li>
-                        <li>Created dashboard for support operations UI</li>
-                        <li>Maintained production CMS servers for BofA web pages</li>
+                        <li>Offshore lead for CMS application development, managing a team of 5 engineers across 3 time zones.</li>
+                        <li>Built enterprise solution generating static HTML pages, serving 2M+ monthly page views while reducing server load by 45%.</li>
+                        <li>Developed Node.js build tool for HTML page generation, reducing build time by 60%.</li>
+                        <li>Created dashboard for support operations, decreasing average incident resolution time by 35%.</li>
+                        <li>Maintained production CMS servers for BofA web pages with 99.9% uptime across 50+ applications.</li>
                     </ul>
                 </div>
                 <div class="exp-card">
@@ -976,13 +1248,12 @@
                     <div class="role">Senior Software Engineer</div>
                     <div class="company">HSBC Global Technology</div>
                     <div class="date">Feb 2011 – Aug 2013</div>
-                    <div class="tech">HTML, JavaScript, CSS, Java, Teamsite, OpenDeploy</div>
+                    <div class="tech">HTML, JavaScript, CSS, Java, TeamSite, OpenDeploy</div>
                     <ul>
-                        <li>Attended HP Autonomy Teamsite training in Hong Kong</li>
-                        <li>Developed Teamsite templates using JS, AJAX, HTML</li>
-                        <li>Led end-to-end content migration from US to HK servers</li>
-                        <li>Upgraded Teamsite from 6.5 to 7.3.1</li>
-                        <li>Automated health check process for all Teamsites</li>
+                        <li>Developed TeamSite templates using JavaScript, AJAX, and HTML for 20+ regional banking sites.</li>
+                        <li>Led end-to-end content migration from US to HK servers, migrating 10,000+ assets with zero downtime.</li>
+                        <li>Upgraded TeamSite from 6.5 to 7.3.1, improving system performance by 25%.</li>
+                        <li>Automated health-check process for all TeamSites, reducing manual monitoring by 80% and saving 15+ hours per week.</li>
                     </ul>
                 </div>
                 <div class="exp-card">
@@ -992,11 +1263,10 @@
                     <div class="date">Nov 2007 – Jan 2011</div>
                     <div class="tech">Teamsite, Java, Perl, XML, Solaris, Veritas Cluster</div>
                     <ul>
-                        <li>Maintained production environment for BT.com & CMS</li>
-                        <li>Worked as Onsite SPOC at UK client location</li>
-                        <li>Involved in Rochdale Migration of BT.com website</li>
-                        <li>Developed workflows and Perl housekeeping scripts</li>
-                        <li>Modified templates based on requirements</li>
+                        <li>Maintained production environment for BT.com and CMS supporting 5M+ daily visitors.</li>
+                        <li>Served as onsite SPOC at UK client location, coordinating with 3 cross-functional teams.</li>
+                        <li>Led Rochdale migration of BT.com website, migrating 15,000+ pages with 99.5% data integrity and zero downtime.</li>
+                        <li>Developed workflows and Perl housekeeping scripts, automating 20+ manual processes.</li>
                     </ul>
                 </div>
             </div>
@@ -1110,6 +1380,53 @@
             // SW registration would go here if you create a service-worker.js
             // navigator.serviceWorker.register('/service-worker.js');
         });
+    }
+    
+    // Career Journey Interactive Effects
+    document.querySelectorAll('.journey-circle').forEach((circle, index) => {
+        circle.addEventListener('mouseenter', () => {
+            // Add ripple effect
+            circle.style.animation = 'none';
+            setTimeout(() => {
+                if (circle.classList.contains('current')) {
+                    circle.style.animation = 'pulse-glow 2s ease-in-out infinite';
+                }
+            }, 10);
+        });
+        
+        // Add staggered entrance animation
+        circle.style.opacity = '0';
+        circle.style.transform = 'scale(0.5)';
+        setTimeout(() => {
+            circle.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            circle.style.opacity = '1';
+            circle.style.transform = 'scale(1)';
+        }, 100 + index * 150);
+    });
+    
+    // Domain Circle Tooltips
+    document.querySelectorAll('.domain-circle').forEach(circle => {
+        circle.addEventListener('click', () => {
+            const company = circle.getAttribute('title');
+            circle.style.transform = 'scale(1.3) rotate(360deg)';
+            setTimeout(() => {
+                circle.style.transform = '';
+            }, 600);
+        });
+    });
+    
+    // Parallax effect for sidebar on scroll (desktop only)
+    if (window.innerWidth > 768) {
+        const sidebar = document.querySelector('.sidebar');
+        const journeyNodes = document.querySelectorAll('.journey-node');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            journeyNodes.forEach((node, i) => {
+                const offset = scrollY * 0.02 * (i + 1);
+                node.style.transform = `translateX(${Math.sin(offset) * 3}px)`;
+            });
+        }, { passive: true });
     }
 </script>
 </body>
