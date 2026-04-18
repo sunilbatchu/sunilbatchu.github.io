@@ -686,7 +686,7 @@
         
 
         
-        /* Mobile Header & Hamburger Menu */
+        /* Mobile Header */
         .mobile-header {
             display: none;
             position: fixed;
@@ -698,7 +698,7 @@
             z-index: 1000;
             padding: 0 20px;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             box-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         .mobile-header .logo {
@@ -709,51 +709,58 @@
         .mobile-header .logo span {
             color: #667eea;
         }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 28px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px;
-        }
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
         
-        /* Overlay for mobile */
-        .overlay {
+        /* Bottom Navigation */
+        .bottom-nav {
             display: none;
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 998;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            height: 65px;
+            background: linear-gradient(135deg, #2d3643 0%, #1e2633 100%);
+            z-index: 1000;
+            justify-content: space-around;
+            align-items: center;
+            padding: 8px 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(102,126,234,0.3);
         }
-        .overlay.active {
-            display: block;
-            opacity: 1;
+        .nav-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            min-width: 70px;
+        }
+        .nav-tab i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .nav-tab span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .nav-tab.active {
+            color: #fff;
+            background: rgba(102,126,234,0.3);
+        }
+        .nav-tab.active i {
+            color: #667eea;
+            transform: scale(1.1);
+        }
+        .nav-tab:hover {
+            color: #fff;
+            background: rgba(102,126,234,0.2);
         }
         
         /* Tablet - Large (1200px) */
@@ -781,39 +788,67 @@
                 overflow-x: hidden;
             }
             .mobile-header { display: flex; }
-            .hamburger { display: flex; }
+            .bottom-nav { display: flex; }
             .page { 
                 grid-template-columns: 1fr;
                 padding-top: 60px;
+                padding-bottom: 65px;
                 min-height: auto;
                 height: auto;
             }
             .sidebar {
-                position: fixed;
-                top: 0;
-                left: -320px;
-                width: 300px;
-                height: 100vh;
-                z-index: 999;
-                padding-top: 80px;
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: calc(100vh - 125px);
+                padding: 20px 16px;
                 overflow-y: auto;
                 overflow-x: hidden;
                 -webkit-overflow-scrolling: touch;
-                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display: none;
             }
             .sidebar.active {
-                left: 0;
+                display: flex;
+                background: linear-gradient(180deg, #f5f7ff 0%, #e8ecff 100%);
+                color: #333;
             }
+            .sidebar.active .profile h1 {
+                background: linear-gradient(90deg, #2d3643, #667eea, #2d3643);
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .sidebar.active .profile .title { color: #555; }
+            .sidebar.active .contact-list div { color: #444; }
+            .sidebar.active .contact-list a { color: #667eea; }
+            .sidebar.active .contact-list i { color: #667eea; }
+            .sidebar.active .sidebar-section h3 { color: #667eea; border-bottom-color: rgba(102,126,234,0.3); }
+            .sidebar.active .skill-tag { background: rgba(102,126,234,0.15); color: #4a5568; }
+            .sidebar.active .edu-item strong { color: #2d3643; }
+            .sidebar.active .edu-item span { color: #555; }
+            .sidebar.active .cert-badge { background: rgba(102,126,234,0.15); color: #333; }
+            .sidebar.active .domain-circle { background: rgba(102,126,234,0.1); color: #333; border-color: rgba(102,126,234,0.4); }
             .sidebar::before { display: none; }
             .main { 
                 padding: 20px 16px;
-                min-height: calc(100vh - 60px);
+                min-height: calc(100vh - 125px);
                 overflow-y: auto;
                 overflow-x: hidden;
                 height: auto;
                 -webkit-overflow-scrolling: touch;
                 will-change: transform;
                 transform: translateZ(0);
+                display: none;
+            }
+            .main.active {
+                display: flex;
+            }
+            /* Skills view - show only skills sections from main */
+            .main.skills-view section { display: none; }
+            .main.skills-view section:nth-child(4),
+            .main.skills-view section:nth-child(5) { display: block; }
+            .main.skills-view {
+                background: linear-gradient(180deg, #f0f4ff 0%, #e8ecff 100%);
             }
             .experience-grid { grid-template-columns: 1fr 1fr; }
             .skills-row { grid-template-columns: 1fr 1fr; }
@@ -836,9 +871,7 @@
             html, body { font-size: 12px; }
             
             .sidebar { 
-                width: 280px;
-                left: -290px;
-                padding: 70px 16px 20px;
+                padding: 16px 16px 20px;
             }
             
             .main { padding: 16px 12px; gap: 16px; }
@@ -911,12 +944,10 @@
             .mobile-header { padding: 0 12px; height: 55px; }
             .mobile-header .logo { font-size: 1rem; }
             
-            .page { padding-top: 55px; }
+            .page { padding-top: 55px; padding-bottom: 65px; }
             
             .sidebar { 
-                width: 260px; 
-                left: -270px;
-                padding: 65px 14px 16px;
+                padding: 14px 14px 16px;
             }
             
             .main { padding: 12px 10px; gap: 14px; }
@@ -942,6 +973,11 @@
             .journey-circle.current { width: 38px; height: 38px; }
             .journey-label { font-size: 0.55rem; }
             .journey-label strong { font-size: 0.6rem; }
+            
+            .bottom-nav { height: 60px; }
+            .nav-tab { padding: 6px 12px; min-width: 60px; }
+            .nav-tab i { font-size: 1rem; }
+            .nav-tab span { font-size: 0.65rem; }
         }
         
         /* Landscape phone */
@@ -956,15 +992,18 @@
         
         /* Print styles */
         @media print {
-            .mobile-header, .hamburger, .overlay { display: none !important; }
-            .page { grid-template-columns: 280px 1fr; padding-top: 0; }
+            .mobile-header, .bottom-nav { display: none !important; }
+            .page { grid-template-columns: 280px 1fr; padding-top: 0; padding-bottom: 0; }
             .sidebar { 
                 position: relative; 
-                left: 0 !important; 
+                display: flex !important;
                 height: auto;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 background: #2d3643 !important;
+            }
+            .main {
+                display: flex !important;
             }
             .exp-card:hover, .skill-box:hover, .achievement:hover { transform: none; box-shadow: none; }
             .career-journey, .domain-grid { display: none; }
@@ -975,15 +1014,23 @@
 <!-- Mobile Header -->
 <header class="mobile-header">
     <div class="logo">Sunil <span>Batchu</span></div>
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
 </header>
 
-<!-- Overlay -->
-<div class="overlay" onclick="toggleMenu()"></div>
+<!-- Bottom Navigation for Mobile -->
+<nav class="bottom-nav">
+    <button class="nav-tab" data-target="sidebar" onclick="switchTab('sidebar')">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+    </button>
+    <button class="nav-tab active" data-target="main" onclick="switchTab('main')">
+        <i class="fas fa-briefcase"></i>
+        <span>Experience</span>
+    </button>
+    <button class="nav-tab" data-target="skills" onclick="switchTab('skills')">
+        <i class="fas fa-code"></i>
+        <span>Skills</span>
+    </button>
+</nav>
 
 <div class="page">
     <aside class="sidebar">
@@ -1024,6 +1071,7 @@
             <span class="skill-tag">GitHub Copilot</span>
             <span class="skill-tag">Distributed Systems</span>
             <span class="skill-tag">Telemetry</span>
+            <span class="skill-tag">DORA Metrics</span>
         </div>
 
         <div class="sidebar-section">
@@ -1124,7 +1172,7 @@
                 <div class="achievement"><i class="fas fa-check-circle"></i> Led multiple engineering teams totaling 18+ engineers delivering high-availability products on cloud platforms.</div>
                 <div class="achievement"><i class="fas fa-check-circle"></i> Automated code reviews using internal LLMs with context engineering.</div>
                 <div class="achievement"><i class="fas fa-check-circle"></i> Enabled teams to adopt AI coding tools (GitHub Copilot) to boost productivity.</div>
-                <div class="achievement"><i class="fas fa-check-circle"></i> Leveraged AI tools for automated test case generation, increasing test coverage by 40% and reducing execution time by 50%.</div>
+                <div class="achievement"><i class="fas fa-check-circle"></i> AI-generated tests: +40% coverage, -50% execution time.</div>
                 <div class="achievement"><i class="fas fa-check-circle"></i> Used AI for sprint planning, work-item distribution, and capacity planning.</div>
                 <div class="achievement"><i class="fas fa-check-circle"></i> Architected microservices (Node.js, Java) with 99.99% uptime.</div>
                 <div class="achievement"><i class="fas fa-check-circle"></i> Reduced deployment time by 50% through CI/CD automation.</div>
@@ -1190,11 +1238,12 @@
                     <div class="tech">Node.js, React, Backbone, Marionette, LESS, Handlebars</div>
                     <ul>
                         <li>Led 18+ engineers across multiple UI teams, achieving 30% faster release cycles by implementing agentic coding workflows and AI-augmented engineering practices.</li>
-                        <li>Owned full lifecycle from conception to deployment, driving seamless end-to-end delivery of features across Web and Mobile clients.</li>
-                        <li>Drove Platform Engineering for SmartView UI framework through cross-group design collaboration, reducing feature development time by 30%.</li>
-                        <li>Architected distributed services with integrated observability and telemetry pipelines, reducing live site issue resolution time by 40%.</li>
-                        <li>Led on-call rotation and 24x7 incident response, ensuring rapid debugging and resolution of customer-reported issues.</li>
-                        <li>Improved test coverage by 35% through integration testing strategy and fail-fast iteration practices.</li>
+                        <li>Owned end-to-end delivery from conception to production across Web and Mobile clients.</li>
+                        <li>Led platform engineering for SmartView UI framework with cross-group design alignment, reducing feature development time by 30%.</li>
+                        <li>Built SmartView modernization operating model (roadmap, milestones, dependencies, adoption targets); led SteerCo reviews; managed risks/escalations.</li>
+                        <li>Architected distributed services with observability/telemetry, cutting live-site issue resolution time by 40%.</li>
+                        <li>Led 24x7 on-call and incident response, accelerating diagnosis and customer issue resolution.</li>
+                        <li>Increased test coverage by 35% via integration testing strategy and fail-fast iteration.</li>
                         <li>Submitted a patent idea for remediating accessibility violations via AI &amp; context engineering.</li>
                         <li>Built high-performing teams through strategic hiring, mentoring, and performance management.</li>
                     </ul>
@@ -1275,73 +1324,78 @@
 </div>
 
 <script>
-    function toggleMenu() {
-        const hamburger = document.querySelector('.hamburger');
+    // Bottom Navigation Tab Switching
+    function switchTab(target) {
         const sidebar = document.querySelector('.sidebar');
-        const overlay = document.querySelector('.overlay');
+        const main = document.querySelector('.main');
+        const tabs = document.querySelectorAll('.nav-tab');
         
-        hamburger.classList.toggle('active');
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-        // Only block scroll if menu is open and on mobile
-        if (sidebar.classList.contains('active') && window.innerWidth <= 768) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
+        // Update active tab
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.target === target) {
+                tab.classList.add('active');
+            }
+        });
+        
+        // Show/hide content based on target
+        if (target === 'sidebar') {
+            sidebar.classList.add('active');
+            main.classList.remove('active');
+            main.classList.remove('skills-view');
+        } else if (target === 'main') {
+            sidebar.classList.remove('active');
+            main.classList.add('active');
+            main.classList.remove('skills-view');
+        } else if (target === 'skills') {
+            sidebar.classList.remove('active');
+            main.classList.add('active');
+            main.classList.add('skills-view');
+        }
+        
+        // Scroll to top when switching tabs
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Initialize mobile view on load
+    function initMobileView() {
+        if (window.innerWidth <= 768) {
+            const sidebar = document.querySelector('.sidebar');
+            const main = document.querySelector('.main');
+            sidebar.classList.remove('active');
+            main.classList.add('active');
         }
     }
     
-    // Close menu when clicking on sidebar links (mobile)
-    document.querySelectorAll('.sidebar a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                toggleMenu();
-            }
-        });
-    });
-    
-    // Close menu on resize if switching to desktop (debounced)
+    // Handle resize - reset to desktop layout when switching to desktop
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
+            const sidebar = document.querySelector('.sidebar');
+            const main = document.querySelector('.main');
+            
             if (window.innerWidth > 768) {
-                const hamburger = document.querySelector('.hamburger');
-                const sidebar = document.querySelector('.sidebar');
-                const overlay = document.querySelector('.overlay');
-                
-                hamburger.classList.remove('active');
+                // Desktop: show both
                 sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
+                main.classList.remove('active');
+                main.classList.remove('skills-view');
+            } else {
+                // Mobile: ensure one is active
+                if (!sidebar.classList.contains('active') && !main.classList.contains('active')) {
+                    sidebar.classList.add('active');
+                    document.querySelector('.nav-tab[data-target="sidebar"]').classList.add('active');
+                }
             }
         }, 100);
     }, { passive: true });
     
-    // Close menu with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && document.querySelector('.sidebar.active')) {
-            toggleMenu();
-        }
-    });
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', initMobileView);
     
-    // Swipe to close sidebar on mobile (only on sidebar, not main content)
-    let sidebarTouchStartX = 0;
-    
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) {
-        sidebar.addEventListener('touchstart', (e) => {
-            sidebarTouchStartX = e.touches[0].clientX;
-        }, { passive: true });
-        
-        sidebar.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const deltaX = sidebarTouchStartX - touchEndX;
-            // Only close if swiped left more than 60px
-            if (deltaX > 60 && sidebar.classList.contains('active')) {
-                toggleMenu();
-            }
-        }, { passive: true });
+    // Also run on load in case DOMContentLoaded already fired
+    if (document.readyState !== 'loading') {
+        initMobileView();
     }
     
     // Intersection Observer for lazy animations (performance boost)
